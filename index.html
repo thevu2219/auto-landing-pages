@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get 3 FREE Audiobooks – Start Listening Today | Audiobooks.com</title>
+    <meta name="description" content="Claim your 3 free audiobooks with a 30-day free trial. 700,000+ premium titles. No commitment. Cancel anytime.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        :root {
+            --primary: #FF6B35;
+            --primary-dark: #E85A2A;
+            --secondary: #1B1B2F;
+            --accent: #F7C948;
+            --bg: #0F0F1A;
+            --bg-card: #1A1A2E;
+            --text: #E8E8F0;
+            --text-muted: #9999AA;
+            --success: #4CAF50;
+            --radius: 16px;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background */
+        .bg-glow {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 20%, rgba(255,107,53,0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(247,201,72,0.05) 0%, transparent 50%);
+            z-index: 0;
+            animation: glow 8s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-3%, -3%); }
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header */
+        header {
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span { color: var(--text); }
+        
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 60px 0 40px;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,107,53,0.12);
+            border: 1px solid rgba(255,107,53,0.3);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-badge {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,53,0.3); }
+            50% { box-shadow: 0 0 0 8px rgba(255,107,53,0); }
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1.5px;
+        }
+        
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 550px;
+            margin: 0 auto 36px;
+        }
+        
+        /* CTA Button */
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-decoration: none;
+            padding: 18px 40px;
+            border-radius: 60px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(255,107,53,0.35);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.5s;
+        }
+        
+        .cta-btn:hover::before { left: 100%; }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(255,107,53,0.5);
+        }
+        
+        .cta-sub {
+            display: block;
+            margin-top: 12px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+        
+        .cta-sub svg { vertical-align: middle; margin-right: 4px; }
+        
+        /* Stats bar */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item { text-align: center; }
+        
+        .stat-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+        
+        .stat-label {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Features */
+        .features {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 48px;
+            letter-spacing: -0.5px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius);
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            border-color: rgba(255,107,53,0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+        
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, rgba(255,107,53,0.15), rgba(247,201,72,0.1));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 18px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+        
+        /* How it works */
+        .how-it-works {
+            padding: 60px 0;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+            text-align: center;
+        }
+        
+        .step-num {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 0 auto 16px;
+            color: var(--secondary);
+        }
+        
+        .step h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .step p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 60px 0;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius);
+            padding: 28px;
+        }
+        
+        .stars {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 14px;
+        }
+        
+        .testimonial-card blockquote {
+            font-size: 0.95rem;
+            color: var(--text);
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+        
+        .reviewer {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        
+        /* FAQ */
+        .faq {
+            padding: 60px 0;
+        }
+        
+        .faq-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 20px 0;
+            cursor: pointer;
+        }
+        
+        .faq-q {
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-q::after {
+            content: '+';
+            font-size: 1.4rem;
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-q::after {
+            transform: rotate(45deg);
+        }
+        
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+        
+        .faq-item.active .faq-a {
+            max-height: 200px;
+            padding-top: 12px;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(180deg, transparent, rgba(255,107,53,0.05));
+        }
+        
+        .final-cta h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        
+        .final-cta p {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            font-size: 1.05rem;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        
+        footer a {
+            color: var(--text-muted);
+            text-decoration: underline;
+        }
+        
+        /* Urgency bar */
+        .urgency-bar {
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            text-align: center;
+            padding: 10px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .urgency-bar span {
+            background: rgba(0,0,0,0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 6px;
+            font-weight: 800;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            .stats { gap: 20px; }
+            .stat-num { font-size: 1.4rem; }
+            .cta-btn { padding: 16px 32px; font-size: 1.05rem; }
+            .hero { padding: 40px 0 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Urgency Bar -->
+    <div class="urgency-bar">
+        🔥 Limited Offer: Get 3 Audiobooks FREE — Trial ends soon! <span id="countdown">29:59</span>
+    </div>
+
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">🎧 audio<span>books</span>.com</div>
+        </header>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="badge">✅ Limited-Time Offer — 100% Free Trial</div>
+            <h1>Listen to <span class="highlight">3 Audiobooks</span><br>Absolutely FREE</h1>
+            <p class="subtitle">Join millions of listeners. Get instant access to 700,000+ premium audiobooks — your first 3 are on us. No credit card commitment.</p>
+            
+            <a href="https://www.cdnnd.com/view.php?id=5545520&pub=3349643" class="cta-btn" id="main-cta">
+                🎧 Claim My 3 Free Audiobooks
+            </a>
+            <small class="cta-sub">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+                30-day free trial · Cancel anytime · No commitment
+            </small>
+        </section>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-num">700K+</div>
+                <div class="stat-label">Premium Titles</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">4.8★</div>
+                <div class="stat-label">App Rating</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">10M+</div>
+                <div class="stat-label">Happy Listeners</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">30 Days</div>
+                <div class="stat-label">Free Trial</div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <section class="features">
+            <h2 class="section-title">Why You'll Love It</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>700,000+ Titles</h3>
+                    <p>From bestsellers to hidden gems — fiction, self-help, business, romance, thriller and everything in between.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎁</div>
+                    <h3>3 FREE Audiobooks</h3>
+                    <p>Pick 1 from our full library plus 2 exclusive bonus titles from our curated VIP section. Yours to keep forever.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Listen Anywhere</h3>
+                    <p>Download and listen offline. Available on iOS, Android, and web. Your library goes wherever you go.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Access</h3>
+                    <p>Start listening in under 60 seconds. No waiting, no downloads required. Sign up and play immediately.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔊</div>
+                    <h3>Premium Narrators</h3>
+                    <p>Professional voice actors bring every story to life. Crystal-clear audio quality on every title.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚫</div>
+                    <h3>No Commitment</h3>
+                    <p>Cancel anytime during your trial. No questions asked. Keep your 3 free audiobooks either way.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-it-works">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <h3>Sign Up Free</h3>
+                    <p>Create your account in 30 seconds. No credit card needed to start.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <h3>Pick Your Books</h3>
+                    <p>Browse 700K+ titles and choose 3 audiobooks you love.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <h3>Start Listening</h3>
+                    <p>Download and enjoy on any device. Your books are yours to keep!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <h2 class="section-title">What Listeners Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>"I've tried Audible, Scribd, and others. Audiobooks.com has the best selection and the free trial gave me 3 amazing books. I'm hooked!"</blockquote>
+                    <div class="reviewer">— Sarah M., Verified Listener</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>"Perfect for my daily commute. The offline download feature is a game-changer. Already finished 8 books this month!"</blockquote>
+                    <div class="reviewer">— James K., Verified Listener</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <blockquote>"The VIP section is incredible — I found titles I couldn't get anywhere else. The narration quality is consistently excellent."</blockquote>
+                    <div class="reviewer">— Michelle R., Verified Listener</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item active">
+                    <div class="faq-q">Is it really free?</div>
+                    <div class="faq-a">Yes! Your 30-day trial includes 3 free audiobooks at absolutely no cost. You can cancel anytime before the trial ends and you won't be charged a penny. The 3 audiobooks you chose are yours to keep forever.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">What happens after the free trial?</div>
+                    <div class="faq-a">After your 30-day trial, your membership continues at $14.95/month for 1 audiobook credit per month. You can cancel anytime with no cancellation fees.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Can I keep the audiobooks if I cancel?</div>
+                    <div class="faq-a">Absolutely! Any audiobooks you've claimed during your trial or membership are yours to keep forever, even if you cancel.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">What devices can I listen on?</div>
+                    <div class="faq-a">Audiobooks.com works on iPhone, iPad, Android phones and tablets, and any web browser. Download books for offline listening anywhere.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">How many audiobooks can I choose from?</div>
+                    <div class="faq-a">Over 700,000 premium titles across all genres — bestsellers, new releases, classics, and exclusive content. Plus 10,000+ free audiobooks available to everyone.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="final-cta">
+            <h2>Ready to Start Listening?</h2>
+            <p>Your 3 free audiobooks are waiting. This offer won't last forever.</p>
+            <a href="https://www.cdnnd.com/view.php?id=5545520&pub=3349643" class="cta-btn">
+                🎧 Get My 3 Free Audiobooks Now
+            </a>
+            <small class="cta-sub">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+                Join 10 million+ happy listeners today
+            </small>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>This is a promotional page. Audiobooks.com is a registered trademark of Storytel Audiobooks USA LLC.</p>
+            <p style="margin-top: 8px;">© 2025 All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ toggle
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Countdown timer
+        let time = 29 * 60 + 59;
+        const countdown = document.getElementById('countdown');
+        setInterval(() => {
+            if (time <= 0) { time = 29 * 60 + 59; }
+            const m = Math.floor(time / 60);
+            const s = time % 60;
+            countdown.textContent = `${m}:${s.toString().padStart(2, '0')}`;
+            time--;
+        }, 1000);
+    </script>
+</body>
+</html>
