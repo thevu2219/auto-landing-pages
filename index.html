@@ -648,5 +648,123 @@ src="https://www.facebook.com/tr?id=1022547020124824&ev=PageView&noscript=1"
             time--;
         }, 1000);
     </script>
+
+<!-- Facebook Pixel Custom Events -->
+<script>
+(function() {
+    // --- 1. Scroll Depth -> ViewContent (fire once at 50%) ---
+    var viewContentFired = false;
+    var scrollDepths = {25: false, 50: false, 75: false, 100: false};
+
+    function getScrollPercent() {
+        var h = document.documentElement;
+        var b = document.body;
+        var st = h.scrollTop || b.scrollTop;
+        var sh = h.scrollHeight || b.scrollHeight;
+        var ch = h.clientHeight;
+        return Math.round((st / (sh - ch)) * 100);
+    }
+
+    window.addEventListener('scroll', function() {
+        var pct = getScrollPercent();
+
+        // Track scroll depth milestones
+        Object.keys(scrollDepths).forEach(function(threshold) {
+            if (pct >= parseInt(threshold) && !scrollDepths[threshold]) {
+                scrollDepths[threshold] = true;
+                if (typeof fbq !== 'undefined') {
+                    fbq('trackCustom', 'ScrollDepth' + threshold, {
+                        content_name: 'Audiobooks Landing Page',
+                        scroll_percent: threshold
+                    });
+                }
+            }
+        });
+
+        // ViewContent at 50% scroll
+        if (pct >= 50 && !viewContentFired) {
+            viewContentFired = true;
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'ViewContent', {
+                    content_name: 'Audiobooks.com Free Trial',
+                    content_category: 'Audiobooks',
+                    content_type: 'product',
+                    value: 14.95,
+                    currency: 'USD'
+                });
+            }
+        }
+    });
+
+    // --- 2. CTA Click -> Lead + StartTrial ---
+    var leadFired = false;
+    var startTrialFired = false;
+
+    function trackCTAClick(e) {
+        var btn = e.target.closest('.cta-btn');
+        if (!btn) return;
+
+        var btnId = btn.id || 'secondary-cta';
+        var btnText = btn.textContent.trim();
+
+        // Lead event (fire once)
+        if (!leadFired) {
+            leadFired = true;
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead', {
+                    content_name: 'Audiobooks.com Free Trial',
+                    content_category: 'Audiobooks',
+                    value: 14.95,
+                    currency: 'USD',
+                    button_id: btnId,
+                    button_text: btnText
+                });
+            }
+        }
+
+        // StartTrial event (fire once)
+        if (!startTrialFired) {
+            startTrialFired = true;
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'StartTrial', {
+                    content_name: 'Audiobooks.com 30-Day Trial',
+                    content_category: 'Audiobooks',
+                    predicted_ltv: 14.95,
+                    currency: 'USD',
+                    button_id: btnId
+                });
+            }
+        }
+    }
+
+    document.addEventListener('click', trackCTAClick);
+
+    // --- 3. Time on Page -> Engagement (after 30s) ---
+    var engagementFired = false;
+    setTimeout(function() {
+        if (!engagementFired && typeof fbq !== 'undefined') {
+            engagementFired = true;
+            fbq('trackCustom', 'EngagedVisit', {
+                content_name: 'Audiobooks Landing Page',
+                time_on_page_seconds: 30
+            });
+        }
+    }, 30000);
+
+    // --- 4. FAQ Interaction -> track engagement ---
+    document.querySelectorAll('[onclick]').forEach(function(el) {
+        el.addEventListener('click', function() {
+            if (typeof fbq !== 'undefined') {
+                fbq('trackCustom', 'FAQInteraction', {
+                    content_name: 'Audiobooks Landing Page',
+                    action: 'faq_toggle'
+                });
+            }
+        });
+    });
+})();
+</script>
+<!-- End Facebook Pixel Custom Events -->
+
 </body>
 </html>
